@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/medicine-delivery/static/css/main.987d6f43.css",
+    "main.js": "/medicine-delivery/static/js/main.3dce5de7.js",
+    "static/js/760.ce8f20b8.chunk.js": "/medicine-delivery/static/js/760.ce8f20b8.chunk.js",
+    "static/js/968.e83bd09c.chunk.js": "/medicine-delivery/static/js/968.e83bd09c.chunk.js",
+    "static/js/568.b609792f.chunk.js": "/medicine-delivery/static/js/568.b609792f.chunk.js",
+    "index.html": "/medicine-delivery/index.html",
+    "main.987d6f43.css.map": "/medicine-delivery/static/css/main.987d6f43.css.map",
+    "main.3dce5de7.js.map": "/medicine-delivery/static/js/main.3dce5de7.js.map",
+    "760.ce8f20b8.chunk.js.map": "/medicine-delivery/static/js/760.ce8f20b8.chunk.js.map",
+    "968.e83bd09c.chunk.js.map": "/medicine-delivery/static/js/968.e83bd09c.chunk.js.map",
+    "568.b609792f.chunk.js.map": "/medicine-delivery/static/js/568.b609792f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.987d6f43.css",
+    "static/js/main.3dce5de7.js"
+  ]
+}

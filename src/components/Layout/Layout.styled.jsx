@@ -74,6 +74,7 @@ export const Line = styled.div`
 
 export const Container = styled.main`
   margin: 0 auto;
+  padding: 20px 10px;
 
   @media screen and (min-width: 768px) {
     padding: 20px;

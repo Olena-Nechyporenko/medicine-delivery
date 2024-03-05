@@ -31,7 +31,7 @@ export const DrugsCatalog = () => {
           {drugs.map(({ img, name, group, price, _id }) => (
             <Item key={_id}>
               <ImgWrapp>
-                <Img src={img} alt="" />
+                <Img src={img} alt={name} />
               </ImgWrapp>
               <DescriptionWrapp>
                 <Name>{name}</Name>

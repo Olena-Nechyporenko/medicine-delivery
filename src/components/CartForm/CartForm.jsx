@@ -1,9 +1,20 @@
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { FormWrapper, Label, Input } from './CartForm.styled';
+import {
+  Wrapper,
+  FormContainer,
+  FormWrapper,
+  Label,
+  Input,
+  ErrorWrapper,
+  TotalPriceWrapper,
+  TotalPrice,
+  Button,
+} from './CartForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectInCart } from 'redux/cart/selectors';
 import { addOrder } from 'redux/orders/operations';
+import { OrderedDrugsList } from 'components/OrderedDrugsList/OrderedDrugsList';
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -11,7 +22,7 @@ const schema = Yup.object().shape({
     .min(1, 'Must be at least 1 characters long')
     .max(50, 'Must be no more than 50 characters long'),
   email: Yup.string().email().required(),
-  phone: Yup.string().required(),
+  phone: Yup.number().required().typeError('field can only contain numbers'),
   address: Yup.string().required(),
 });
 
@@ -24,7 +35,7 @@ export const CartForm = () => {
       userData: {
         name: values.name,
         email: values.email,
-        phone: values.phone,
+        phone: values.phone.toString(),
         address: values.address,
       },
       drugs: inCart.map(drug => ({
@@ -35,7 +46,12 @@ export const CartForm = () => {
       })),
     };
     dispatch(addOrder(orderData));
+    resetForm();
   };
+
+  const totalPrice = inCart.reduce((sum, drug) => {
+    return sum + parseFloat(drug.price);
+  }, 0);
 
   return (
     <Formik
@@ -44,34 +60,62 @@ export const CartForm = () => {
       validationSchema={schema}
     >
       <Form autoComplete="off">
-        <FormWrapper>
-          <Label htmlFor="name">
-            Name
-            <Input type="text" name="name" required />
-            <span>
-              <ErrorMessage name="name" />
-            </span>
-          </Label>
-          <Label htmlFor="email">
-            Email
-            <Input type="text" name="email" required />
-            <span>
-              <ErrorMessage name="email" />
-            </span>
-          </Label>
-          <Label htmlFor="phone">
-            Phone
-            <Input type="text" name="phone" required />
-          </Label>
-          <Label htmlFor="address">
-            Address
-            <Input type="text" name="address" required />
-          </Label>
-          {/* <Button type="submit">Search</Button> */}
-        </FormWrapper>
+        <Wrapper>
+          <FormContainer>
+            <FormWrapper>
+              <Label htmlFor="name">
+                Name
+                <Input type="text" name="name" required />
+                <ErrorWrapper>
+                  <ErrorMessage name="name" />
+                </ErrorWrapper>
+              </Label>
+              <Label htmlFor="email">
+                Email
+                <Input
+                  type="text"
+                  name="email"
+                  required
+                  placeholder="example@gmail.com"
+                />
+                <ErrorWrapper>
+                  <ErrorMessage name="email" />
+                </ErrorWrapper>
+              </Label>
+              <Label htmlFor="phone">
+                Phone
+                <Input
+                  type="text"
+                  name="phone"
+                  required
+                  placeholder="097XXXXXXX"
+                />
+                <ErrorWrapper>
+                  <ErrorMessage name="phone" />
+                </ErrorWrapper>
+              </Label>
+              <Label htmlFor="address">
+                Address
+                <Input
+                  type="text"
+                  name="address"
+                  required
+                  placeholder="Kyiv, Vasylkivska, 10"
+                />
+                <ErrorWrapper>
+                  <ErrorMessage name="address" />
+                </ErrorWrapper>
+              </Label>
+            </FormWrapper>
+          </FormContainer>
 
-        <h2>Total price</h2>
-        <button type="submit">Submit</button>
+          <OrderedDrugsList />
+        </Wrapper>
+
+        <TotalPriceWrapper>
+          <TotalPrice>Total price: {totalPrice.toFixed(2)}</TotalPrice>
+          <Button type="submit">Submit</Button>
+        </TotalPriceWrapper>
       </Form>
     </Formik>
   );

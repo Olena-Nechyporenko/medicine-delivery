@@ -1,20 +1,33 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 800px;
+  width: 350px;
   height: 550px;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
   border-radius: 10px;
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 800px;
+  }
 `;
 
 export const Wrapper = styled.div`
-  padding: 15px;
+  padding: 10px;
+
+  @media screen and (min-width: 768px) {
+    padding: 10px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 15px;
+  }
 `;
 export const List = styled.ul`
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   gap: 20px 50px;
   height: 500px;
@@ -33,6 +46,13 @@ export const List = styled.ul`
   &::-webkit-scrollbar-track {
     background-color: #e3fee1;
     border-radius: 12px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 5px;
+  }
+  @media screen and (min-width: 1200px) {
+    padding: 5px 52px;
   }
 `;
 
@@ -58,6 +78,7 @@ export const Img = styled.img`
   height: 150px;
   width: 300px;
 `;
+
 export const DescriptionWrapp = styled.div`
   position: relative;
   display: flex;
@@ -65,6 +86,7 @@ export const DescriptionWrapp = styled.div`
   gap: 5px;
   padding: 5px 10px;
 `;
+
 export const Name = styled.div`
   font-weight: 600;
   font-size: 16px;

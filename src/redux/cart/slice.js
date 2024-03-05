@@ -1,14 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchOneDrugById } from './operations';
 
-const handlePending = state => {
-  state.cart.isLoading = true;
-};
-const handleRejected = (state, action) => {
-  state.cart.isLoading = false;
-  state.cart.error = action.payload;
-};
-
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
@@ -35,15 +27,21 @@ const cartSlice = createSlice({
       });
     },
   },
-  extraReducers: {
-    [fetchOneDrugById.pending]: handlePending,
-    [fetchOneDrugById.rejected]: handleRejected,
-    [fetchOneDrugById.fulfilled](state, action) {
-      state.cart.isLoading = false;
-      state.cart.error = null;
-      action.payload.quantity = 1;
-      state.cart.inCart.push(action.payload);
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchOneDrugById.pending, state => {
+        state.cart.isLoading = true;
+      })
+      .addCase(fetchOneDrugById.rejected, (state, action) => {
+        state.cart.isLoading = false;
+        state.cart.error = action.payload;
+      })
+      .addCase(fetchOneDrugById.fulfilled, (state, action) => {
+        state.cart.isLoading = false;
+        state.cart.error = null;
+        action.payload.quantity = 1;
+        state.cart.inCart.push(action.payload);
+      });
   },
 });
 

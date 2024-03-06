@@ -26,6 +26,9 @@ const cartSlice = createSlice({
         return drug;
       });
     },
+    clearCart(state, action) {
+      state.cart.inCart = [];
+    },
   },
   extraReducers: builder => {
     builder
@@ -45,6 +48,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { removeFromCart, changeQuantity } = cartSlice.actions;
+export const { removeFromCart, changeQuantity, clearCart } = cartSlice.actions;
 
 export const cartReducer = cartSlice.reducer;

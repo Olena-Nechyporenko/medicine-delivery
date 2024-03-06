@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: relative;
   width: 300px;
   height: 550px;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
@@ -177,5 +178,25 @@ export const Button = styled.button`
 
   &:hover {
     background-color: var(--hover-color);
+  }
+`;
+
+export const Text = styled.div`
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--main-text-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 400px;
   }
 `;

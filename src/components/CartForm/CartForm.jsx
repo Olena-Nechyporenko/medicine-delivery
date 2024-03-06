@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import {
   Wrapper,
   FormContainer,
@@ -15,13 +16,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectInCart } from 'redux/cart/selectors';
 import { addOrder } from 'redux/orders/operations';
 import { OrderedDrugsList } from 'components/OrderedDrugsList/OrderedDrugsList';
+import { clearCart } from 'redux/cart/slice';
+
+const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 
 const schema = Yup.object().shape({
   name: Yup.string()
     .required()
-    .min(1, 'Must be at least 1 characters long')
-    .max(50, 'Must be no more than 50 characters long'),
-  email: Yup.string().email().required(),
+    .min(1, 'must be at least 1 characters long')
+    .max(50, 'must be no more than 50 characters long'),
+  email: Yup.string().matches(emailRegex, 'Invalid email format').required(),
   phone: Yup.number().required().typeError('field can only contain numbers'),
   address: Yup.string().required(),
 });
@@ -46,7 +50,9 @@ export const CartForm = () => {
       })),
     };
     dispatch(addOrder(orderData));
+    Notify.success('The order has been sent successfully!');
     resetForm();
+    dispatch(clearCart());
   };
 
   const totalPrice = inCart.reduce((sum, drug) => {

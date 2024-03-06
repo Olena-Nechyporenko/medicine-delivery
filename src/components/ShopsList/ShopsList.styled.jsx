@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  position: relative;
   width: 350px;
   height: 300px;
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,

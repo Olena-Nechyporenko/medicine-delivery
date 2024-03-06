@@ -1,12 +1,10 @@
 @import-normalize;
 
 :root {
-  --secondary-font-family: 'Montserrat', sans-serif;
   --main-text-color: #121417;
   --secondary-text-color: rgba(18, 20, 23, 0.5);
   --accent-color: #47c927;
   --hover-color: #4ff643;
-  --white-text-color: #fff;
 
   --main-transition: 250ms linear;
 }

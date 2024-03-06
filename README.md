@@ -29,7 +29,6 @@ npm start
 ### 5. Link to [Backend Repository](https://github.com/Olena-Nechyporenko/medicine-delivery-backend)
 
 
-
 ## Technologies Used
 
 ### React

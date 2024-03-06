@@ -1,6 +1,11 @@
 import * as Yup from 'yup';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from 'redux/cart/slice';
+import { selectInCart } from 'redux/cart/selectors';
+import { addOrder } from 'redux/orders/operations';
+import { OrderedDrugsList } from 'components/OrderedDrugsList/OrderedDrugsList';
 import {
   Wrapper,
   FormContainer,
@@ -12,11 +17,6 @@ import {
   TotalPrice,
   Button,
 } from './CartForm.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectInCart } from 'redux/cart/selectors';
-import { addOrder } from 'redux/orders/operations';
-import { OrderedDrugsList } from 'components/OrderedDrugsList/OrderedDrugsList';
-import { clearCart } from 'redux/cart/slice';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 

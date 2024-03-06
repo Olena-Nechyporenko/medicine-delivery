@@ -1,5 +1,10 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectInCart } from 'redux/cart/selectors';
+import { fetchOneDrugById } from 'redux/cart/operations';
+import { selectIsLoading, selectfilteredDrugs } from 'redux/drugs/selectors';
+import { DrugsCatalogForm } from 'components/DrugsCatalogForm/DrugsCatalogForm';
+import { Loader } from 'components/Loader/Loader';
 import {
   Container,
   Wrapper,
@@ -14,11 +19,6 @@ import {
   Button,
   Text,
 } from './DrugsCatalog.styled';
-import { selectIsLoading, selectfilteredDrugs } from 'redux/drugs/selectors';
-import { fetchOneDrugById } from 'redux/cart/operations';
-import { Loader } from 'components/Loader/Loader';
-import { selectInCart } from 'redux/cart/selectors';
-import { DrugsCatalogForm } from 'components/DrugsCatalogForm/DrugsCatalogForm';
 
 export const DrugsCatalog = () => {
   const dispatch = useDispatch();
@@ -47,25 +47,23 @@ export const DrugsCatalog = () => {
         ) : (
           <>
             {!isLoading && (
-              <>
-                <List>
-                  {drugs.map(({ img, name, group, price, _id }) => (
-                    <Item key={_id}>
-                      <ImgWrapp>
-                        <Img src={img} alt={name} />
-                      </ImgWrapp>
-                      <DescriptionWrapp>
-                        <Name>{name}</Name>
-                        <Group>{group}</Group>
-                        <Price>{price} ₴</Price>
-                        <Button onClick={() => handleAddInOrder(_id)}>
-                          Add to Cart
-                        </Button>
-                      </DescriptionWrapp>
-                    </Item>
-                  ))}
-                </List>
-              </>
+              <List>
+                {drugs.map(({ img, name, group, price, _id }) => (
+                  <Item key={_id}>
+                    <ImgWrapp>
+                      <Img src={img} alt={name} />
+                    </ImgWrapp>
+                    <DescriptionWrapp>
+                      <Name>{name}</Name>
+                      <Group>{group}</Group>
+                      <Price>{price} ₴</Price>
+                      <Button onClick={() => handleAddInOrder(_id)}>
+                        Add to Cart
+                      </Button>
+                    </DescriptionWrapp>
+                  </Item>
+                ))}
+              </List>
             )}
           </>
         )}

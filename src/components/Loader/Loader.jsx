@@ -8,7 +8,7 @@ export const Loader = () => {
         visible={true}
         height="80"
         width="80"
-        color="#3470ff"
+        color="#47c927"
         ariaLabel="tail-spin-loading"
         radius="1"
       />

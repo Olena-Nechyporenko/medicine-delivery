@@ -19,6 +19,10 @@ const drugsSlice = createSlice({
       state.filterFrom = action.payload.from;
       state.filterTo = action.payload.to;
     },
+    clearFilter(state, action) {
+      state.filterFrom = null;
+      state.filterTo = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -49,5 +53,5 @@ const drugsSlice = createSlice({
   },
 });
 
-export const { setFilter } = drugsSlice.actions;
+export const { setFilter, clearFilter } = drugsSlice.actions;
 export const drugsReducer = drugsSlice.reducer;

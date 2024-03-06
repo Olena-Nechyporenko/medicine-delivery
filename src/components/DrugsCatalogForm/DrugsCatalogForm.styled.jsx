@@ -32,7 +32,7 @@ export const InputFrom = styled(Field)`
   color: var(--main-text-color);
   border-radius: 10px;
   border: 1px solid rgba(18, 20, 23, 0.5);
-  width: 100px;
+  width: 60px;
   height: 28px;
   background: var(--input-color);
   padding-left: 14px;
@@ -44,6 +44,13 @@ export const InputFrom = styled(Field)`
     line-height: 1.1;
     color: var(--main-text-color);
   }
+
+  @media screen and (min-width: 768px) {
+    width: 60px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 100px;
+  }
 `;
 
 export const InputTo = styled(Field)`
@@ -53,7 +60,7 @@ export const InputTo = styled(Field)`
   color: var(--main-text-color);
   border-radius: 10px;
   border: 1px solid rgba(18, 20, 23, 0.5);
-  width: 100px;
+  width: 60px;
   height: 28px;
   background: var(--input-color);
   padding-left: 14px;
@@ -64,6 +71,13 @@ export const InputTo = styled(Field)`
     font-size: 15px;
     line-height: 1.1;
     color: var(--main-text-color);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 60px;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 100px;
   }
 `;
 
@@ -75,7 +89,26 @@ export const SearchButton = styled.button`
   color: var(--main-text-color);
   border-radius: 10px;
   border: none;
-  width: 120px;
+  width: 100px;
+  height: 32px;
+  background: var(--accent-color);
+  cursor: pointer;
+  transition: all var(--main-transition);
+
+  &:hover {
+    background-color: var(--hover-color);
+  }
+`;
+
+export const ResetButton = styled.button`
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.1;
+  color: var(--main-text-color);
+  border-radius: 10px;
+  border: none;
+  width: 100px;
   height: 32px;
   background: var(--accent-color);
   cursor: pointer;

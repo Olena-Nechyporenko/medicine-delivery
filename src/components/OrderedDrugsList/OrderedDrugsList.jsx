@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { selectInCart } from 'redux/cart/selectors';
+import { changeQuantity, removeFromCart } from 'redux/cart/slice';
 import {
   Container,
   Wrapper,
@@ -15,11 +17,10 @@ import {
   Button,
   Text,
 } from './OrderedDrugsList.styled';
-import { selectInCart } from 'redux/cart/selectors';
-import { changeQuantity, removeFromCart } from 'redux/cart/slice';
 
 export const OrderedDrugsList = () => {
   const dispatch = useDispatch();
+
   const inCart = useSelector(selectInCart);
 
   const handleRemoveFromCart = id => {

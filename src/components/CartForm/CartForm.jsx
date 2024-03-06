@@ -37,10 +37,10 @@ export const CartForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     const orderData = {
       userData: {
-        name: values.name,
-        email: values.email,
-        phone: values.phone.toString(),
-        address: values.address,
+        name: values.name.trim(),
+        email: values.email.trim(),
+        phone: values.phone.toString().trim(),
+        address: values.address.trim(),
       },
       drugs: inCart.map(drug => ({
         _id: drug._id,

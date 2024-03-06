@@ -10,8 +10,16 @@ const drugsSlice = createSlice({
       isLoading: false,
       error: null,
     },
+    filterFrom: null,
+    filterTo: null,
   },
 
+  reducers: {
+    setFilter(state, action) {
+      state.filterFrom = action.payload.from;
+      state.filterTo = action.payload.to;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchShops.pending, state => {
@@ -41,4 +49,5 @@ const drugsSlice = createSlice({
   },
 });
 
+export const { setFilter } = drugsSlice.actions;
 export const drugsReducer = drugsSlice.reducer;

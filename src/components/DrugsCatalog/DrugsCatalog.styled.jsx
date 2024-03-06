@@ -24,14 +24,14 @@ export const Wrapper = styled.div`
     padding: 10px;
   }
   @media screen and (min-width: 1200px) {
-    padding: 15px;
+    padding: 10px;
   }
 `;
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
   gap: 20px 50px;
-  height: 500px;
+  height: 450px;
   overflow-y: auto;
   padding: 5px;
 
